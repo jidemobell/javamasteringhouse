@@ -50,6 +50,7 @@ export interface Track {
   id: TrackId;
   name: string;
   tagline: string;
+  description?: string;
   /** "phased" = walk Phase 1..N. "project" = pick any module, dive in. */
   mode: 'phased' | 'project';
   phases: Phase[];
