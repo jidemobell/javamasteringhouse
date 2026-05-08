@@ -4,7 +4,7 @@
 // Concepts are first-class and shared across all tracks.
 
 export type TrackId = 'nexus' | 'meridian' | 'flux' | 'sentinel';
-export type Difficulty = 'mid' | 'advanced';
+export type Difficulty = 'entry' | 'mid' | 'intermediate' | 'advanced';
 
 export interface ConceptRef {
   id: string;
@@ -59,7 +59,7 @@ export interface Concept {
   id: string;
   title: string;
   oneLiner: string;
-  category: 'pattern' | 'concurrency' | 'language' | 'architecture' | 'practice';
+  category: 'pattern' | 'concurrency' | 'language' | 'architecture' | 'practice' | 'java';
   body: string; // markdown
   /** Where this concept shows up — for cross-linking back into tracks */
   appearsIn: { trackId: TrackId; phaseId: string; taskId?: string }[];
