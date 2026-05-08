@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  color-scheme: dark;
+}
+
+html, body, #root { height: 100%; }
+body { margin: 0; }
+
+/* Markdown-rendered content */
+.prose-app h1 { @apply text-2xl font-semibold mt-4 mb-2 text-slate-100; }
+.prose-app h2 { @apply text-xl  font-semibold mt-6 mb-2 text-slate-100; }
+.prose-app h3 { @apply text-lg  font-semibold mt-4 mb-2 text-slate-200; }
+.prose-app p  { @apply my-3 leading-relaxed text-slate-300; }
+.prose-app ul { @apply list-disc pl-6 my-2 text-slate-300; }
+.prose-app ol { @apply list-decimal pl-6 my-2 text-slate-300; }
+.prose-app li { @apply my-1; }
+.prose-app code { @apply bg-ink-800 text-accent rounded px-1.5 py-0.5 text-[0.85em] font-mono; }
+.prose-app pre  { @apply bg-ink-900 border border-ink-800 rounded-lg p-4 overflow-x-auto my-4 text-sm; }
+.prose-app pre code { @apply bg-transparent text-slate-200 p-0; }
+.prose-app table { @apply w-full text-sm my-4 border-collapse; }
+.prose-app th, .prose-app td { @apply border border-ink-800 px-3 py-1.5 text-left; }
+.prose-app th { @apply bg-ink-900 text-slate-200; }
+.prose-app a  { @apply text-accent underline-offset-4 hover:underline; }
+.prose-app strong { @apply text-slate-100; }

@@ -1,0 +1,40 @@
+{
+  "name": "apphome",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Unified Java mastery platform — Nexus track (phased) + Mini-ASM track (project) + shared concept library",
+  "scripts": {
+    "build:starters": "node scripts/build-starters.mjs",
+    "predev": "npm run build:starters",
+    "dev": "vite",
+    "prebuild": "npm run build:starters",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@monaco-editor/react": "^4.6.0",
+    "clsx": "^2.0.0",
+    "lucide-react": "^0.294.0",
+    "mermaid": "^11.14.0",
+    "monaco-editor": "^0.45.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-markdown": "^9.0.1",
+    "react-router-dom": "^6.20.1",
+    "remark-gfm": "^4.0.0",
+    "tailwind-merge": "^2.1.0",
+    "zustand": "^4.4.7"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "archiver": "^7.0.1",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.3.6",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  }
+}
