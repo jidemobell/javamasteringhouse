@@ -11,13 +11,13 @@ export function HomePage() {
           A platform for the Java I actually use at work.
         </h1>
         <p className="mt-3 text-slate-400 leading-relaxed">
-          Mid-to-advanced Java by building, not by watching. Two tracks share one
-          concept library — pick how you want to learn today.
+          Mid-to-advanced engineering by building, not by watching. Five tracks
+          share one concept library — pick how you want to learn today.
         </p>
       </header>
 
       <section className="grid md:grid-cols-2 gap-4">
-        {tracks.map((t) => {
+        {tracks.map((t, i) => {
           const Icon = t.mode === 'phased' ? Layers : Compass;
           return (
             <Link
@@ -31,7 +31,7 @@ export function HomePage() {
                 </div>
                 <div>
                   <div className="text-xs uppercase tracking-wider text-slate-500">
-                    Track {t.id === 'nexus' ? 'A' : 'B'} · {t.mode}
+                    Track {String.fromCharCode(65 + i)} · {t.mode}
                   </div>
                   <div className="text-lg font-semibold text-slate-100">{t.name}</div>
                 </div>

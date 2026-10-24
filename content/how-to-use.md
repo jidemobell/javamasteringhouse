@@ -122,8 +122,8 @@ The patterns you'll meet in this platform:
 
 ### How concepts and tracks relate
 
-- **Tracks** (Nexus, Mini-ASM) are the *journey*. They tell a story end
-  to end.
+- **Tracks** (Nexus, Meridian, Flux, Sentinel, Forge) are the *journey*.
+  They tell a story end to end.
 - **Concepts** (Race Conditions, Template Method, Testing, …) are the
   *atoms*. Each one is a tight, focused write-up of a single idea.
 - Every track phase **links into** the concepts it relies on. Every
@@ -156,7 +156,9 @@ of this platform is the habit, not the code.
 ### Sidebar shortcuts
 
 - **Home** — landing page with track summary.
-- **Nexus / Mini-ASM** — the two tracks.
+- **Nexus / Meridian / Flux / Sentinel / Forge** — the tracks. Every track
+  has the same phase skeleton described above; only the subject matter
+  changes.
 - **Concepts** — the cross-cutting library, browsable directly.
 
 The progress widget at the bottom of the sidebar lets you export and

@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '../lib/cn';
-import { Layers, BookOpen, Compass, Home, BookMarked, Zap, Shield } from 'lucide-react';
+import { Layers, BookOpen, Compass, Home, BookMarked, Zap, Shield, Sparkles } from 'lucide-react';
 import { ProgressIO } from './ProgressIO';
 
 const items = [
@@ -10,6 +10,7 @@ const items = [
   { to: '/track/meridian', label: 'Meridian (project)', icon: Compass },
   { to: '/track/flux', label: 'Flux (reactive)', icon: Zap },
   { to: '/track/sentinel', label: 'Sentinel (security)', icon: Shield },
+  { to: '/track/forge', label: 'Forge (AI tools)', icon: Sparkles },
   { to: '/concepts', label: 'Concepts', icon: BookOpen },
 ];
 

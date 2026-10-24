@@ -1,9 +1,66 @@
 import { useEffect, useState } from 'react';
 import Editor from '@monaco-editor/react';
+import type { Monaco } from '@monaco-editor/react';
 import { Eye, EyeOff, Check, RotateCcw } from 'lucide-react';
 import type { CodeSample, TrackId } from '../types';
 import { useStore } from '../store/useStore';
 import { track } from '../lib/analytics';
+
+/**
+ * Monaco ships Go out of the box but not HCL or PromQL. These register minimal
+ * Monarch tokenizers so Terraform and query samples are readable rather than
+ * flat grey. Kept deliberately small — comments, strings, numbers, keywords.
+ */
+function registerExtraLanguages(monaco: Monaco) {
+  if (!monaco.languages.getLanguages().some((l) => l.id === 'hcl')) {
+    monaco.languages.register({ id: 'hcl' });
+    monaco.languages.setMonarchTokensProvider('hcl', {
+      keywords: [
+        'resource', 'data', 'variable', 'output', 'provider', 'module', 'locals',
+        'terraform', 'required_providers', 'required_version', 'for_each', 'count',
+        'depends_on', 'lifecycle', 'dynamic',
+      ],
+      tokenizer: {
+        root: [
+          [/#.*$/, 'comment'],
+          [/\/\/.*$/, 'comment'],
+          [/\/\*/, 'comment', '@comment'],
+          [/"([^"\\]|\\.)*"/, 'string'],
+          [/\b(true|false|null)\b/, 'keyword'],
+          [/\b\d+(\.\d+)?\b/, 'number'],
+          [/[a-zA-Z_][\w-]*(?=\s*=)/, 'variable'],
+          [/[a-zA-Z_][\w-]*/, { cases: { '@keywords': 'keyword', '@default': 'identifier' } }],
+          [/[{}[\](),.]/, 'delimiter'],
+        ],
+        comment: [
+          [/[^*/]+/, 'comment'],
+          [/\*\//, 'comment', '@pop'],
+          [/[*/]/, 'comment'],
+        ],
+      },
+    });
+  }
+
+  if (!monaco.languages.getLanguages().some((l) => l.id === 'promql')) {
+    monaco.languages.register({ id: 'promql' });
+    monaco.languages.setMonarchTokensProvider('promql', {
+      keywords: [
+        'by', 'without', 'on', 'ignoring', 'group_left', 'group_right', 'offset',
+        'bool', 'and', 'or', 'unless', 'sum', 'avg', 'min', 'max', 'count',
+        'rate', 'increase', 'histogram_quantile', 'absent', 'vector', 'label_replace',
+      ],
+      tokenizer: {
+        root: [
+          [/#.*$/, 'comment'],
+          [/"([^"\\]|\\.)*"/, 'string'],
+          [/\b\d+(\.\d+)?\b/, 'number'],
+          [/[a-zA-Z_:][\w:]*/, { cases: { '@keywords': 'keyword', '@default': 'type' } }],
+          [/[{}[\]()=~!<>,+\-*/]/, 'operator'],
+        ],
+      },
+    });
+  }
+}
 
 interface Props {
   trackId: TrackId;
@@ -94,6 +151,7 @@ export function CodeEditor({ trackId, phaseId, taskId, sample }: Props) {
           height="100%"
           theme="vs-dark"
           language={sample.language}
+          beforeMount={registerExtraLanguages}
           value={showReference ? sample.reference : code}
           onChange={showReference ? undefined : onChange}
           options={{

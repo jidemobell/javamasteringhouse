@@ -14,6 +14,13 @@ import kafkaMd from '../../content/concepts/kafka-producer-consumer.md?raw';
 import provenanceMd from '../../content/concepts/provenance-and-merge.md?raw';
 import testingMd from '../../content/concepts/testing.md?raw';
 import specificationPatternMd from '../../content/concepts/specification-pattern.md?raw';
+import agentLoopMd from '../../content/concepts/agent-loop.md?raw';
+import promptSpecMd from '../../content/concepts/prompt-spec.md?raw';
+import trustBoundaryMd from '../../content/concepts/trust-boundary.md?raw';
+import moduleLayeringMd from '../../content/concepts/module-layering.md?raw';
+import spiPluginMd from '../../content/concepts/spi-plugin.md?raw';
+import viewModelSeparationMd from '../../content/concepts/view-model-separation.md?raw';
+import mavenMultimoduleMd from '../../content/concepts/maven-multimodule.md?raw';
 
 export const concepts: Concept[] = [
   {
@@ -25,6 +32,7 @@ export const concepts: Concept[] = [
     appearsIn: [
       { trackId: 'nexus', phaseId: 'phase-2', taskId: 'super-collector' },
       { trackId: 'meridian', phaseId: 'collectors' },
+      { trackId: 'forge', phaseId: 'phase-3' },
     ],
     sourceRef: 'general-knowlegde/projects/nexus-route-topology-simulator/phase2-inheritance-and-interfaces.md',
   },
@@ -61,6 +69,7 @@ export const concepts: Concept[] = [
     appearsIn: [
       { trackId: 'nexus', phaseId: 'phase-3' },
       { trackId: 'meridian', phaseId: 'topology-service' },
+      { trackId: 'forge', phaseId: 'phase-4' },
     ],
     sourceRef: 'general-knowlegde/race-conditions.md',
   },
@@ -161,6 +170,8 @@ export const concepts: Concept[] = [
       { trackId: 'nexus', phaseId: 'phase-2' },
       { trackId: 'nexus', phaseId: 'phase-3' },
       { trackId: 'meridian', phaseId: 'topology-service' },
+      { trackId: 'forge', phaseId: 'phase-3' },
+      { trackId: 'forge', phaseId: 'phase-4' },
     ],
   },
   {
@@ -171,7 +182,85 @@ export const concepts: Concept[] = [
     body: specificationPatternMd,
     appearsIn: [
       { trackId: 'nexus', phaseId: 'phase-2.5' },
+      { trackId: 'forge', phaseId: 'phase-2' },
     ],
+  },
+  {
+    id: 'agent-loop',
+    title: 'The Agent Loop',
+    oneLiner: 'Every AI tool runs the same skeleton: plan → act → verify → fix. You own the skeleton; the agent fills the steps.',
+    category: 'practice',
+    body: agentLoopMd,
+    appearsIn: [
+      { trackId: 'forge', phaseId: 'phase-1' },
+      { trackId: 'forge', phaseId: 'phase-3' },
+    ],
+  },
+  {
+    id: 'prompt-spec',
+    title: 'Prompts Are Contracts',
+    oneLiner: 'A prompt is a spec, not a sentence — intent, context, constraints, and acceptance criteria.',
+    category: 'practice',
+    body: promptSpecMd,
+    appearsIn: [
+      { trackId: 'forge', phaseId: 'phase-2' },
+    ],
+  },
+  {
+    id: 'trust-boundary',
+    title: 'The Trust Boundary',
+    oneLiner: 'The AI produces, you own. Only verified output crosses the line between cargo and yours.',
+    category: 'practice',
+    body: trustBoundaryMd,
+    appearsIn: [
+      { trackId: 'forge', phaseId: 'phase-1' },
+      { trackId: 'forge', phaseId: 'phase-5' },
+    ],
+  },
+  {
+    id: 'module-layering',
+    title: 'Module Layering & the Dependency DAG',
+    oneLiner: 'Split a codebase into modules whose dependencies form a one-way DAG; expose only a small public surface.',
+    category: 'architecture',
+    body: moduleLayeringMd,
+    appearsIn: [
+      { trackId: 'guitarlab', phaseId: 'phase-1' },
+      { trackId: 'guitarlab', phaseId: 'phase-2' },
+    ],
+    sourceRef: 'code_files/JJazzLab/',
+  },
+  {
+    id: 'spi-plugin',
+    title: 'Service Provider Interface (SPI / Plugin)',
+    oneLiner: 'Register implementations via @ServiceProvider and let the container find them — no central registry to edit.',
+    category: 'architecture',
+    body: spiPluginMd,
+    appearsIn: [
+      { trackId: 'guitarlab', phaseId: 'phase-2' },
+    ],
+    sourceRef: 'app/InstrumentComponents/',
+  },
+  {
+    id: 'view-model-separation',
+    title: 'View/Model Separation',
+    oneLiner: 'Keep the model free of UI; let the view take a model and render it.',
+    category: 'architecture',
+    body: viewModelSeparationMd,
+    appearsIn: [
+      { trackId: 'guitarlab', phaseId: 'phase-3' },
+    ],
+    sourceRef: 'app/CL_EditorImpl/',
+  },
+  {
+    id: 'maven-multimodule',
+    title: 'Maven Multi-Module Build',
+    oneLiner: 'A parent POM orchestrates modules; mvn install puts each artifact in the local repo so siblings can use it.',
+    category: 'practice',
+    body: mavenMultimoduleMd,
+    appearsIn: [
+      { trackId: 'guitarlab', phaseId: 'phase-1' },
+    ],
+    sourceRef: 'code_files/JJazzLab/',
   },
 ];
 

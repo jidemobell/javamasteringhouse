@@ -1,9 +1,10 @@
-// Domain types for the unified Java mastery platform.
+// Domain types for the unified engineering mastery platform.
 // Tracks: 'nexus' (phased workshop), 'meridian' (project deep-dive),
-//         'flux' (Spring WebFlux + Maven), 'sentinel' (Spring Security + Gradle).
+//         'flux' (Spring WebFlux + Maven), 'sentinel' (Spring Security + Gradle),
+//         'forge' (AI tooling), 'guitarlab' (open-source Java), 'beacon' (SRE).
 // Concepts are first-class and shared across all tracks.
 
-export type TrackId = 'nexus' | 'meridian' | 'flux' | 'sentinel';
+export type TrackId = 'nexus' | 'meridian' | 'flux' | 'sentinel' | 'forge' | 'guitarlab' | 'beacon';
 export type Difficulty = 'entry' | 'mid' | 'intermediate' | 'advanced';
 
 export interface ConceptRef {
@@ -13,7 +14,17 @@ export interface ConceptRef {
 
 export interface CodeSample {
   filename: string;
-  language: 'java' | 'yaml' | 'gradle' | 'json' | 'shell';
+  language:
+    | 'java'
+    | 'go'
+    | 'hcl'
+    | 'promql'
+    | 'yaml'
+    | 'gradle'
+    | 'json'
+    | 'shell'
+    | 'markdown'
+    | 'plaintext';
   starter: string;   // what the learner sees in the editor
   reference: string; // shown when "Show solution" is toggled
 }
@@ -60,7 +71,7 @@ export interface Concept {
   id: string;
   title: string;
   oneLiner: string;
-  category: 'pattern' | 'concurrency' | 'language' | 'architecture' | 'practice' | 'java';
+  category: 'pattern' | 'concurrency' | 'language' | 'architecture' | 'practice' | 'java' | 'reliability';
   body: string; // markdown
   /** Where this concept shows up — for cross-linking back into tracks */
   appearsIn: { trackId: TrackId; phaseId: string; taskId?: string }[];
