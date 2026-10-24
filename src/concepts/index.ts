@@ -21,6 +21,12 @@ import moduleLayeringMd from '../../content/concepts/module-layering.md?raw';
 import spiPluginMd from '../../content/concepts/spi-plugin.md?raw';
 import viewModelSeparationMd from '../../content/concepts/view-model-separation.md?raw';
 import mavenMultimoduleMd from '../../content/concepts/maven-multimodule.md?raw';
+import sliSloSlaMd from '../../content/concepts/sli-slo-sla.md?raw';
+import errorBudgetsMd from '../../content/concepts/error-budgets.md?raw';
+import burnRateAlertsMd from '../../content/concepts/burn-rate-alerts.md?raw';
+import terraformStateMd from '../../content/concepts/terraform-state.md?raw';
+import goContextMd from '../../content/concepts/go-context.md?raw';
+import backpressureMd from '../../content/concepts/backpressure.md?raw';
 
 export const concepts: Concept[] = [
   {
@@ -124,6 +130,7 @@ export const concepts: Concept[] = [
     body: healthChecksMd,
     appearsIn: [
       { trackId: 'meridian', phaseId: 'status-service' },
+      { trackId: 'beacon', phaseId: 'phase-1', taskId: 'health-endpoints' },
     ],
   },
   {
@@ -261,6 +268,79 @@ export const concepts: Concept[] = [
       { trackId: 'guitarlab', phaseId: 'phase-1' },
     ],
     sourceRef: 'code_files/JJazzLab/',
+  },
+  {
+    id: 'sli-slo-sla',
+    title: 'SLI, SLO, SLA',
+    oneLiner: 'An SLI is a ratio, an SLO is a threshold on it, an SLA is that threshold with a consequence.',
+    category: 'reliability',
+    body: sliSloSlaMd,
+    appearsIn: [
+      { trackId: 'beacon', phaseId: 'phase-3', taskId: 'outcome-counter' },
+      { trackId: 'beacon', phaseId: 'phase-3', taskId: 'latency-histogram' },
+      { trackId: 'beacon', phaseId: 'phase-5', taskId: 'slo-document' },
+      { trackId: 'beacon', phaseId: 'phase-5', taskId: 'recording-rules' },
+      { trackId: 'beacon', phaseId: 'phase-5', taskId: 'promql-practice' },
+    ],
+  },
+  {
+    id: 'error-budgets',
+    title: 'Error Budgets',
+    oneLiner: 'The complement of the SLO: the unreliability you are allowed to spend, and what spending it changes.',
+    category: 'reliability',
+    body: errorBudgetsMd,
+    appearsIn: [
+      { trackId: 'beacon', phaseId: 'phase-5', taskId: 'slo-document' },
+      { trackId: 'beacon', phaseId: 'phase-5', taskId: 'recording-rules' },
+      { trackId: 'beacon', phaseId: 'phase-6', taskId: 'postmortem' },
+      { trackId: 'beacon', phaseId: 'phase-6', taskId: 'budget-policy' },
+    ],
+  },
+  {
+    id: 'burn-rate-alerts',
+    title: 'Burn-Rate Alerts',
+    oneLiner: 'Alert on how fast the budget is being consumed, with a long window for materiality and a short one for currency.',
+    category: 'reliability',
+    body: burnRateAlertsMd,
+    appearsIn: [
+      { trackId: 'beacon', phaseId: 'phase-6', taskId: 'burn-rate-alerts' },
+      { trackId: 'beacon', phaseId: 'phase-6', taskId: 'runbook' },
+      { trackId: 'beacon', phaseId: 'phase-6', taskId: 'postmortem' },
+    ],
+  },
+  {
+    id: 'terraform-state',
+    title: 'Terraform State & Drift',
+    oneLiner: 'Plan compares your intent to recorded state, not to the world — which is why drift and manual fixes surprise people.',
+    category: 'practice',
+    body: terraformStateMd,
+    appearsIn: [
+      { trackId: 'beacon', phaseId: 'phase-4', taskId: 'first-apply' },
+      { trackId: 'beacon', phaseId: 'phase-4', taskId: 'variables-outputs' },
+      { trackId: 'beacon', phaseId: 'phase-4', taskId: 'drift-exercise' },
+    ],
+  },
+  {
+    id: 'go-context',
+    title: 'context & Graceful Shutdown',
+    oneLiner: 'Cancellation flows from the entry point; shut down in the order that leaves no producer writing to a closed channel.',
+    category: 'concurrency',
+    body: goContextMd,
+    appearsIn: [
+      { trackId: 'beacon', phaseId: 'phase-2', taskId: 'graceful-shutdown' },
+    ],
+  },
+  {
+    id: 'backpressure',
+    title: 'Backpressure',
+    oneLiner: 'Block, drop or reject — choose explicitly, bound every queue, and let the choice decide which metric tells the truth.',
+    category: 'reliability',
+    body: backpressureMd,
+    appearsIn: [
+      { trackId: 'beacon', phaseId: 'phase-2', taskId: 'worker-pool' },
+      { trackId: 'beacon', phaseId: 'phase-2', taskId: 'overload-decision' },
+      { trackId: 'beacon', phaseId: 'phase-3', taskId: 'queue-gauge' },
+    ],
   },
 ];
 

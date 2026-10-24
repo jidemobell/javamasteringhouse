@@ -8,11 +8,12 @@ export function HomePage() {
     <div className="max-w-4xl mx-auto p-8">
       <header className="mb-10">
         <h1 className="text-3xl font-semibold text-slate-100">
-          A platform for the Java I actually use at work.
+          A platform for the engineering I actually do at work.
         </h1>
         <p className="mt-3 text-slate-400 leading-relaxed">
-          Mid-to-advanced engineering by building, not by watching. Five tracks
-          share one concept library — pick how you want to learn today.
+          Mid-to-advanced engineering by building, not by watching. Seven tracks
+          share one concept library — Java for the craft, and Beacon for the
+          reliability side of running it in production.
         </p>
       </header>
 

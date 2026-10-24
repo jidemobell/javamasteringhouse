@@ -5,8 +5,9 @@ import { fluxTrack } from './flux';
 import { sentinelTrack } from './sentinel';
 import { forgeTrack } from './forge';
 import { guitarlabTrack } from './guitarlab';
+import { beaconTrack } from './beacon';
 
-export const tracks: Track[] = [nexusTrack, miniasmTrack, fluxTrack, sentinelTrack, forgeTrack, guitarlabTrack];
+export const tracks: Track[] = [nexusTrack, miniasmTrack, fluxTrack, sentinelTrack, forgeTrack, guitarlabTrack, beaconTrack];
 
 export const tracksById: Record<TrackId, Track> = {
   nexus: nexusTrack,
@@ -15,4 +16,5 @@ export const tracksById: Record<TrackId, Track> = {
   sentinel: sentinelTrack,
   forge: forgeTrack,
   guitarlab: guitarlabTrack,
+  beacon: beaconTrack,
 };

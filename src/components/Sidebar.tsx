@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '../lib/cn';
-import { Layers, BookOpen, Compass, Home, BookMarked, Zap, Shield, Sparkles } from 'lucide-react';
+import { Layers, BookOpen, Compass, Home, BookMarked, Zap, Shield, Sparkles, Activity, Gauge } from 'lucide-react';
 import { ProgressIO } from './ProgressIO';
 
 const items = [
@@ -11,6 +11,8 @@ const items = [
   { to: '/track/flux', label: 'Flux (reactive)', icon: Zap },
   { to: '/track/sentinel', label: 'Sentinel (security)', icon: Shield },
   { to: '/track/forge', label: 'Forge (AI tools)', icon: Sparkles },
+  { to: '/track/guitarlab', label: 'GuitarLab (OSS Java)', icon: Gauge },
+  { to: '/track/beacon', label: 'Beacon (SRE)', icon: Activity },
   { to: '/concepts', label: 'Concepts', icon: BookOpen },
 ];
 
@@ -20,7 +22,7 @@ export function Sidebar() {
     <aside className="w-60 shrink-0 border-r border-ink-800 bg-ink-900 p-4 flex flex-col gap-1 overflow-y-auto">
       <div className="px-2 py-3 mb-2">
         <div className="text-lg font-semibold text-slate-100">AppHome</div>
-        <div className="text-xs text-slate-500">Java mastery, mid → advanced</div>
+        <div className="text-xs text-slate-500">Engineering, mid → advanced</div>
       </div>
       {items.map(({ to, label, icon: Icon }) => {
         const active =
